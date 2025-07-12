@@ -293,54 +293,41 @@
 .dark .react-flow__resize-control {
   border-color: #1a1a1a !important;
 }
-/* Edge Flow Animation */
-@keyframes flow {
-  0% {
-    stroke-dashoffset: 20;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
+/* Enhanced Edge Styling with Arrows */
+.react-flow__edge {
+  stroke: #70f !important;
+  stroke-width: 2 !important;
 }
 
-@keyframes glow-pulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 3px #70f) drop-shadow(0 0 6px #70f);
-  }
-  50% {
-    filter: drop-shadow(0 0 6px #70f) drop-shadow(0 0 12px #70f) drop-shadow(0 0 18px #70f);
-  }
+.react-flow__edge.animated path {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
 }
 
-.react-flow__edge path {
-  stroke: #70f;
-  stroke-width: 2;
-  stroke-dasharray: 5, 5;
-  animation: flow 1s linear infinite, 2s ease-in-out infinite;
-  filter: drop-shadow(0 0 3px #70f);
+.react-flow__edge:hover {
+  stroke-width: 3 !important;
 }
 
-.react-flow__edge:hover path {
-  stroke-width: 3;
-  animation: flow 0.5s linear infinite, glow-pulse 1s ease-in-out infinite;
-  filter: drop-shadow(0 0 6px #70f) drop-shadow(0 0 12px #70f);
+/* Arrow marker styling */
+.react-flow__arrowhead {
+  fill: #70f !important;
 }
 
 /* Dark mode edge styling */
-.dark .react-flow__edge path {
-  stroke: #a855f7;
-  filter: drop-shadow(0 0 3px #a855f7);
+.dark .react-flow__edge {
+  stroke: #a855f7 !important;
 }
 
-.dark .react-flow__edge:hover path {
-  filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px #a855f7);
+.dark .react-flow__arrowhead {
+  fill: #a855f7 !important;
 }
 
-@keyframes glow-pulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 6px currentColor);
+/* Flow animation */
+@keyframes dashdraw {
+  from {
+    stroke-dashoffset: 10;
   }
-  50% {
-    filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 12px currentColor) drop-shadow(0 0 18px currentColor);
+  to {
+    stroke-dashoffset: 0;
   }
 }

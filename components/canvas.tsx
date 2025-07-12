@@ -15,6 +15,7 @@ import ReactFlow, {
   Background,
   useReactFlow,
   OnSelectionChangeParams,
+  MarkerType,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { useAppStore } from '@/lib/store';
@@ -141,6 +142,13 @@ function FlowCanvas() {
         id: generateEdgeId(),
         ...params,
         style: { stroke: '#70f', strokeWidth: 2 },
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          width: 20,
+          height: 20,
+          color: '#70f',
+        },
+        animated: true,
       };
       setEdges(addEdge(newEdge, edges));
       saveToHistory();
