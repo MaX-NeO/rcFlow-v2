@@ -265,43 +265,70 @@ interface CustomNodeProps extends NodeProps<CustomNodeData> {
         )}
 
         {/* Handles for connections */}
-        <>
-          {layout === 'horizontal' ? (
-            <>
-              {/* Source handle (parent) - right side for horizontal layout */}
-              <Handle 
-                type="source" 
-                position={Position.Right} 
-                className="!w-3 !h-3 !bg-green-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
-                style={{ right: -4 }}
-              />
-              {/* Target handle (child) - left side for horizontal layout */}
-              <Handle 
-                type="target" 
-                position={Position.Left} 
-                className="!w-3 !h-3 !bg-red-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
-                style={{ left: -4 }}
-              />
-            </>
-          ) : (
-            <>
-              {/* Source handle (parent) - bottom side for vertical layout */}
-              <Handle 
-                type="source" 
-                position={Position.Bottom} 
-                className="!w-3 !h-3 !bg-green-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
-                style={{ bottom: -4 }}
-              />
-              {/* Target handle (child) - top side for vertical layout */}
-              <Handle 
-                type="target" 
-                position={Position.Top} 
-                className="!w-3 !h-3 !bg-red-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
-                style={{ top: -4 }}
-              />
-            </>
-          )}
-        </>
+        {/* Multiple handles on all sides for free-flow connections */}
+        {/* Top handles */}
+        <Handle 
+          type="source" 
+          position={Position.Top} 
+          id="source-top"
+          className="!w-2 !h-2 !bg-blue-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+          style={{ top: -4, left: '50%', transform: 'translateX(-50%)' }}
+        />
+        <Handle 
+          type="target" 
+          position={Position.Top} 
+          id="target-top"
+          className="!w-2 !h-2 !bg-orange-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+          style={{ top: -4, left: '30%', transform: 'translateX(-50%)' }}
+        />
+        
+        {/* Right handles */}
+        <Handle 
+          type="source" 
+          position={Position.Right} 
+          id="source-right"
+          className="!w-2 !h-2 !bg-blue-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+          style={{ right: -4, top: '50%', transform: 'translateY(-50%)' }}
+        />
+        <Handle 
+          type="target" 
+          position={Position.Right} 
+          id="target-right"
+          className="!w-2 !h-2 !bg-orange-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+          style={{ right: -4, top: '30%', transform: 'translateY(-50%)' }}
+        />
+        
+        {/* Bottom handles */}
+        <Handle 
+          type="source" 
+          position={Position.Bottom} 
+          id="source-bottom"
+          className="!w-2 !h-2 !bg-blue-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+          style={{ bottom: -4, left: '50%', transform: 'translateX(-50%)' }}
+        />
+        <Handle 
+          type="target" 
+          position={Position.Bottom} 
+          id="target-bottom"
+          className="!w-2 !h-2 !bg-orange-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+          style={{ bottom: -4, left: '30%', transform: 'translateX(-50%)' }}
+        />
+        
+        {/* Left handles */}
+        <Handle 
+          type="source" 
+          position={Position.Left} 
+          id="source-left"
+          className="!w-2 !h-2 !bg-blue-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+          style={{ left: -4, top: '50%', transform: 'translateY(-50%)' }}
+        />
+        <Handle 
+          type="target" 
+          position={Position.Left} 
+          id="target-left"
+          className="!w-2 !h-2 !bg-orange-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+          style={{ left: -4, top: '30%', transform: 'translateY(-50%)' }}
+        />
       </div>
 
       {/* Node Popup */}
