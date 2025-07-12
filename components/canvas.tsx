@@ -144,8 +144,8 @@ function FlowCanvas() {
         style: { stroke: '#70f', strokeWidth: 2 },
         markerEnd: {
           type: MarkerType.ArrowClosed,
-          width: 20,
-          height: 20,
+          width: 12,
+          height: 12,
           color: '#70f',
         },
         animated: true,
