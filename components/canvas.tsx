@@ -19,7 +19,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { useAppStore } from '@/lib/store';
-import { CustomNode } from './nodes/custom-node';
+import CustomNode from './nodes/custom-node';
 import { Toolbar } from './toolbar';
 
 const nodeTypes = {
