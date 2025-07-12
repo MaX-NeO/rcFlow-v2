@@ -175,8 +175,8 @@ function FlowCanvas() {
         data: {
           label: '',
           nodeType: currentTool === 'label' ? 'label' : currentTool,
-          width: currentTool === 'label' ? 80 : 90,
-          height: currentTool === 'label' ? 30 : 60,
+          width: currentTool === 'label' ? 80 : currentTool === 'circle' ? 80 : 90,
+          height: currentTool === 'label' ? 30 : currentTool === 'circle' ? 80 : 60,
           backgroundColor: undefined,
           textColor: undefined,
           borderStyle: 'solid',
