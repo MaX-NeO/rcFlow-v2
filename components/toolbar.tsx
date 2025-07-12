@@ -16,8 +16,6 @@ import {
   ZoomIn,
   ZoomOut,
   RotateCcw,
-  ArrowUpDown,
-  ArrowLeftRight,
 } from "lucide-react";
 import { useReactFlow } from "reactflow";
 import { CustomSeparator } from "./custom-seperator";
@@ -26,8 +24,6 @@ export function Toolbar() {
   const {
     currentTool,
     setCurrentTool,
-    currentLayout,
-    setCurrentLayout,
     undo,
     redo,
     history,
@@ -144,36 +140,6 @@ export function Toolbar() {
           className="rounded-full"
         />
 
-        {/* Layout Controls */}
-        <div className="flex items-center gap-1">
-          <Button
-            variant={currentLayout === 'horizontal' ? "default" : "ghost"}
-            size="sm"
-            onClick={() => setCurrentLayout('horizontal')}
-            className={`border ${currentLayout === 'horizontal' ? " border-purple-600 shadow-md shadow-purple-500 bg-purple-600/20" : "border-transparent hover:shadow-sm hover:shadow-purple-600/50"} h-8 w-8 p-0`}
-            title="Horizontal Layout"
-          >
-            <ArrowLeftRight className="h-4 w-4" />
-          </Button>
-          <Button
-            variant={currentLayout === 'vertical' ? "default" : "ghost"}
-            size="sm"
-            onClick={() => setCurrentLayout('vertical')}
-            className={`border ${currentLayout === 'vertical' ? " border-purple-600 shadow-md shadow-purple-500 bg-purple-600/20" : "border-transparent hover:shadow-sm hover:shadow-purple-600/50"} h-8 w-8 p-0`}
-            title="Vertical Layout"
-          >
-            <ArrowUpDown className="h-4 w-4" />
-          </Button>
-        </div>
-
-        {/* <Separator orientation="vertical" className="h-6" /> */}
-        <CustomSeparator
-          orientation="vertical"
-          color="bg-gradient-to-b from-indigo-500 to-purple-600"
-          thickness="thin"
-          length="24px"
-          className="rounded-full"
-        />
         {/* Theme Toggle */}
         <Button
           variant="ghost"

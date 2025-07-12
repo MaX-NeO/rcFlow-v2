@@ -31,7 +31,6 @@ function FlowCanvas() {
   const {
     currentTool,
     setCurrentTool,
-    currentLayout,
     nodes,
     edges,
     setNodes,
@@ -138,8 +137,6 @@ function FlowCanvas() {
 
   const onConnect = useCallback(
     (params: Connection) => {
-      // Ensure consistent parent-to-child flow direction
-      // The source should always be the parent, target should be the child
       const newEdge = { 
         id: generateEdgeId(),
         ...params,
@@ -157,6 +154,11 @@ function FlowCanvas() {
       };
       setEdges(addEdge(newEdge, edges));
       saveToHistory();
+      
+      // Update handle positions after connection
+      setTimeout(() => {
+        updateHandlePositions();
+      }, 100);
     },
     [edges, setEdges, saveToHistory, generateEdgeId]
   );
@@ -230,10 +232,63 @@ function FlowCanvas() {
     saveToHistory();
   }, [saveToHistory]);
 
+  // Function to update handle positions based on node relationships
+  const updateHandlePositions = useCallback(() => {
+    const updatedNodes = nodes.map(node => {
+      // Find all edges connected to this node
+      const connectedEdges = edges.filter(edge => 
+        edge.source === node.id || edge.target === node.id
+      );
+      
+      // Calculate optimal handle positions based on connected nodes
+      const handlePositions = calculateOptimalHandles(node, connectedEdges, nodes);
+      
+      return {
+        ...node,
+        data: {
+          ...node.data,
+          handlePositions
+        }
+      };
+    });
+    
+    setNodes(updatedNodes);
+  }, [nodes, edges, setNodes]);
+
+  // Helper function to calculate optimal handle positions
+  const calculateOptimalHandles = useCallback((node: Node, connectedEdges: Edge[], allNodes: Node[]) => {
+    const handles: any = {};
+    
+    connectedEdges.forEach(edge => {
+      const isSource = edge.source === node.id;
+      const connectedNodeId = isSource ? edge.target : edge.source;
+      const connectedNode = allNodes.find(n => n.id === connectedNodeId);
+      
+      if (connectedNode) {
+        const dx = connectedNode.position.x - node.position.x;
+        const dy = connectedNode.position.y - node.position.y;
+        
+        // Determine the best handle position based on relative position
+        let position;
+        if (Math.abs(dx) > Math.abs(dy)) {
+          // Horizontal connection is stronger
+          position = dx > 0 ? Position.Right : Position.Left;
+        } else {
+          // Vertical connection is stronger
+          position = dy > 0 ? Position.Bottom : Position.Top;
+        }
+        
+        const handleType = isSource ? 'source' : 'target';
+        handles[`${handleType}-${edge.id}`] = position;
+      }
+    });
+    
+    return handles;
+  }, []);
   // Custom node types with layout-aware handles
   const nodeTypes = useMemo(() => ({
-    custom: (props: any) => <CustomNode {...props} layout={currentLayout} />,
-  }), [currentLayout]);
+    custom: (props: any) => <CustomNode {...props} />,
+  }), []);
 
   return (
     <div className="w-full h-full" ref={reactFlowWrapper}>

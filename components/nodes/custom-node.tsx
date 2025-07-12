@@ -17,10 +17,8 @@ interface CustomNodeData {
 }
 
 interface CustomNodeProps extends NodeProps<CustomNodeData> {
-  layout?: 'horizontal' | 'vertical';
 }
 
-export function CustomNode({ id, data, selected, layout = 'horizontal' }: CustomNodeProps) {
   const { editingNodeId, setEditingNodeId, nodes, setNodes, saveToHistory } = useAppStore();
   const [isEditing, setIsEditing] = useState(false);
   const [label, setLabel] = useState(data.label || '');

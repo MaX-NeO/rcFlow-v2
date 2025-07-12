@@ -2,16 +2,11 @@ import { create } from 'zustand';
 import { Node, Edge, Connection } from 'reactflow';
 
 export type Tool = 'select' | 'rectangle' | 'circle' | 'label';
-export type Layout = 'horizontal' | 'vertical';
 
 interface AppState {
   // Tool state
   currentTool: Tool;
   setCurrentTool: (tool: Tool) => void;
-  
-  // Layout state
-  currentLayout: Layout;
-  setCurrentLayout: (layout: Layout) => void;
   
   // Canvas state
   nodes: Node[];
@@ -43,10 +38,6 @@ export const useAppStore = create<AppState>((set, get) => ({
   // Tool state
   currentTool: 'select',
   setCurrentTool: (tool) => set({ currentTool: tool }),
-  
-  // Layout state
-  currentLayout: 'horizontal',
-  setCurrentLayout: (layout) => set({ currentLayout: layout }),
   
   // Canvas state
   nodes: [],
