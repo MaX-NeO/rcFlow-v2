@@ -19,6 +19,7 @@ interface CustomNodeData {
 interface CustomNodeProps extends NodeProps<CustomNodeData> {
 }
 
+export default function CustomNode({ id, data, selected }: CustomNodeProps) {
   const { editingNodeId, setEditingNodeId, nodes, setNodes, saveToHistory } = useAppStore();
   const [isEditing, setIsEditing] = useState(false);
   const [label, setLabel] = useState(data.label || '');
