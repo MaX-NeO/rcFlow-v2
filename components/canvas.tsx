@@ -138,15 +138,20 @@ function FlowCanvas() {
 
   const onConnect = useCallback(
     (params: Connection) => {
+      // Ensure consistent parent-to-child flow direction
+      // The source should always be the parent, target should be the child
       const newEdge = { 
         id: generateEdgeId(),
         ...params,
-        style: { stroke: '#70f', strokeWidth: 2 },
+        style: { 
+          stroke: '#8b5cf6', 
+          strokeWidth: 2 
+        },
         markerEnd: {
           type: MarkerType.ArrowClosed,
-          width: 12,
-          height: 12,
-          color: '#70f',
+          width: 10,
+          height: 10,
+          color: '#8b5cf6',
         },
         animated: true,
       };

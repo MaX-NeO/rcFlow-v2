@@ -295,7 +295,7 @@
 }
 /* Enhanced Edge Styling with Arrows */
 .react-flow__edge {
-  stroke: #70f !important;
+  stroke: #8b5cf6 !important;
   stroke-width: 2 !important;
 }
 
@@ -310,7 +310,7 @@
 
 /* Arrow marker styling */
 .react-flow__arrowhead {
-  fill: #70f !important;
+  fill: #8b5cf6 !important;
 }
 
 /* Dark mode edge styling */

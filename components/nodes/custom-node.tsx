@@ -270,31 +270,35 @@ export function CustomNode({ id, data, selected, layout = 'horizontal' }: Custom
         <>
           {layout === 'horizontal' ? (
             <>
+              {/* Source handle (parent) - right side for horizontal layout */}
               <Handle 
                 type="source" 
                 position={Position.Right} 
-                className="!w-2 !h-2 !bg-blue-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+                className="!w-3 !h-3 !bg-green-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
                 style={{ right: -4 }}
               />
+              {/* Target handle (child) - left side for horizontal layout */}
               <Handle 
                 type="target" 
                 position={Position.Left} 
-                className="!w-2 !h-2 !bg-blue-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+                className="!w-3 !h-3 !bg-red-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
                 style={{ left: -4 }}
               />
             </>
           ) : (
             <>
+              {/* Source handle (parent) - bottom side for vertical layout */}
               <Handle 
                 type="source" 
                 position={Position.Bottom} 
-                className="!w-2 !h-2 !bg-blue-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+                className="!w-3 !h-3 !bg-green-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
                 style={{ bottom: -4 }}
               />
+              {/* Target handle (child) - top side for vertical layout */}
               <Handle 
                 type="target" 
                 position={Position.Top} 
-                className="!w-2 !h-2 !bg-blue-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
+                className="!w-3 !h-3 !bg-red-500 !border-2 !border-white !opacity-0 hover:!opacity-100 !transition-opacity !duration-200" 
                 style={{ top: -4 }}
               />
             </>
